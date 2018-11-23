@@ -14,6 +14,16 @@
       "title": "Capitalism",
       "text": "Mark Twain",
       "id": 3
+    },
+    {
+      "title": "new note",
+      "text": "note text",
+      "id": 4
+    },
+    {
+      "title": "test",
+      "text": "testtt",
+      "id": 5
     }
   ]
 }

@@ -1,0 +1,11 @@
+.error-message {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+}

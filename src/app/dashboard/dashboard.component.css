@@ -1,0 +1,28 @@
+.error-message {
+    display: flex;
+    justify-content: center; 
+    color: red; 
+}
+
+.note-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+}
+
+.note-form-expansion-panel {
+    margin: 0 auto;
+    width: 70vw;
+}
+
+.note-form-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-cards-container {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} 
