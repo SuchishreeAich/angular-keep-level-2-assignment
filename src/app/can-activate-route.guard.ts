@@ -8,23 +8,23 @@ import { RouterService } from './services/router.service';
 @Injectable()
 export class CanActivateRouteGuard implements CanActivate {
 
-  constructor(private authSvc: AuthenticationService,
-    private routerSvc: RouterService) { }
+  constructor(private authenticationService: AuthenticationService,
+    private routerService: RouterService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    const token = this.authSvc.getBearerToken();
-    const routePromise = this.authSvc.isUserAuthenticated(token);
-    routePromise.then(resp => {
+    const bearerToken = this.authenticationService.getBearerToken();
+    const routePromiseResponse = this.authenticationService.isUserAuthenticated(bearerToken);
+    routePromiseResponse.then(resp => {
       if (!resp) {
-        this.routerSvc.routeToLogin();
+        this.routerService.routeToLogin();
       }
     }).catch(err => {
-      this.routerSvc.routeToLogin();
+      this.routerService.routeToLogin();
     });
-    return routePromise;
+    return routePromiseResponse;
 
   }
 }

@@ -7,24 +7,24 @@ import { AuthenticationService } from './authentication.service';
 @Injectable()
 export class NotesService {
 
-  constructor(private httpClient: HttpClient, private authSvc: AuthenticationService) {
+  constructor(private httpClient: HttpClient, private authenticationService: AuthenticationService) {
 
   }
 
   getNotes(): Observable<Array<Note>> {
-    const token = this.authSvc.getBearerToken();
-    const httpOptions = {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    const bearerToken = this.authenticationService.getBearerToken();
+    const httpHeaders = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`)
     };
-    return this.httpClient.get<Array<Note>>('http://localhost:3000/api/v1/notes', httpOptions);
+    return this.httpClient.get<Array<Note>>('http://localhost:3000/api/v1/notes', httpHeaders);
   }
 
   addNote(note: Note): Observable<Note> {
-    const token = this.authSvc.getBearerToken();
-    const httpOptions = {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    const bearerToken = this.authenticationService.getBearerToken();
+    const httpHeaders = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${bearerToken}`)
     };
-    return this.httpClient.post<Note>('http://localhost:3000/api/v1/notes', note, httpOptions);
+    return this.httpClient.post<Note>('http://localhost:3000/api/v1/notes', note, httpHeaders);
   }
 
 }

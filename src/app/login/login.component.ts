@@ -14,22 +14,22 @@ export class LoginComponent {
 
     submitMessage: string;
 
-    constructor(private routerSvc: RouterService,
-      private authSvc: AuthenticationService) {
+    constructor(private routerService: RouterService,
+      private authenticationService: AuthenticationService) {
 
     }
 
     loginSubmit() {
-      const credentials = {
+      const creds = {
         'username': this.username.value,
         'password': this.password.value,
       };
-      const authObs = this.authSvc.authenticateUser(credentials);
-      authObs.subscribe(
+      const authenticationResult = this.authenticationService.authenticateUser(creds);
+      authenticationResult.subscribe(
         resp => {
           if (resp) {
-            this.routerSvc.routeToDashboard();
-            this.authSvc.setBearerToken(resp);
+            this.routerService.routeToDashboard();
+            this.authenticationService.setBearerToken(resp);
           } else {
             this.submitMessage = 'Unauthorized';
           }
@@ -43,6 +43,6 @@ export class LoginComponent {
         }
       );
 
-      return authObs;
+      return authenticationResult;
     }
 }

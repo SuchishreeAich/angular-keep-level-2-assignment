@@ -12,11 +12,11 @@ export class DashboardComponent {
   public note: Note;
   public notes: Array<Note>;
 
-  constructor(private noteSvc: NotesService) {
+  constructor(private noteService: NotesService) {
     this.note = new Note();
     this.notes = [];
 
-    this.noteSvc.getNotes().subscribe(
+    this.noteService.getNotes().subscribe(
       resp => this.notes = resp,
       err => {
         this.errMessage = err.message;
@@ -30,7 +30,7 @@ export class DashboardComponent {
       this.errMessage = 'Title and Text both are required fields';
     }
 
-    this.noteSvc.addNote(this.note).subscribe(
+    this.noteService.addNote(this.note).subscribe(
       response => { },
       err => {
         this.errMessage = err.message;
